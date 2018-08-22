@@ -1,12 +1,16 @@
 Name: Yiheng Xiao NetID: yx426
 
-Amazon Web Services (AWS): EC2
+Amazon Web Services (AWS):
 
-It is a cloud computer system service provided by Amazon with many attractive features. You can use this service to launch virtual computing environments on Amazon's servers remotely from your local computer. The reason to use this service is mainly that the cloud servers have much better computing capability for large programs or heavy load of computation.
+AWS is a subsidiary of Amazon.com that provides on-demand cloud computing platforms. The technology allows subscribers to have at their disposal a virtual cluster of computers, available all the time, through the Internet. The reason to use this service is mainly that the cloud servers have much better computing capability for large programs or heavy load of computation.
 
 Linux:
 
-Linux is an operating system heavily utilized in the high performance and scientific computing. It is quite suitable for data science research because its performance can be optimized for specific tasks and many scientific applications and libraries were built on this system.
+Linux is a family of free and open-source software operating systems built around the Linux kernel. Typically, Linux is packaged in a form known as a Linux distribution (or distro for short) for both desktop and server use. It is commonly utilized in the high performance and scientific computing. It is suitable choice for data analysis for its performance can be optimized for specific tasks and many scientific applications and packages have been built on this system.
+
+
+nano:
+Nano is a text editor for Unix-like computing systems or operating environments using a command line interface. It emulates the Pico text editor, part of the Pine email client, and also provides additional functionality. Nano is keyboard-oriented, controlled with control keys. For example, Ctrl+O saves the current file; Ctrl+W goes to the search menu. GNU nano puts a two-line "shortcut bar" at the bottom of the screen, listing many of the commands available in the current context. For a complete list, Ctrl+G gets the help screen.
 
 Vim:
 
@@ -14,8 +18,12 @@ It is a text editor in Linux. It is quite useful when you want to edit files or 
 
 Git:
 
-Git is version control system allowing multiple contributors to cooperate on the same programming project. You can easily keep track of all the previous versions and other branches of a certain project by this tool.
+Git is version control system allowing multiple contributors to cooperate on the same programming project, and coordinating work on those files among multiple people. You can easily keep track of all the previous versions and other branches of a certain project by this tool.
+
+Relationship between version control system and repository:
+
+A version control system is a tool that keeps track of these changes for us, effectively creating different versions of our files. It allows us to decide which changes will be made to the next version (each record of these changes is called a commit), and keeps useful metadata about them. The complete history of commits for a particular project and their metadata make up a repository. Repositories can be kept in sync across different computers, facilitating collaboration among different people.
 
 Shell:
 
-It is a script programming language that allows you to write codes for the terminal. If you want to run some commands millions of times with different parameters each time, you can write a script using Shell to automate this process.
+It is a script programming language that allows you to write codes for the terminal. What’s special about it is that its job is to run other programs rather than to do calculations itself. The most popular Unix shell is Bash. If you want to run some commands millions of times with different parameters each time, you can write a script using Shell to automate this process. Bash is the default shell on most modern implementations of Unix and in most packages that provide Unix-like tools for Windows.
