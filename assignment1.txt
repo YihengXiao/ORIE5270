@@ -1,0 +1,21 @@
+Name: Yiheng Xiao NetID: yx426
+
+Amazon Web Services (AWS): EC2
+
+It is a cloud computer system service provided by Amazon with many attractive features. You can use this service to launch virtual computing environments on Amazon's servers remotely from your local computer. The reason to use this service is mainly that the cloud servers have much better computing capability for large programs or heavy load of computation.
+
+Linux:
+
+Linux is an operating system heavily utilized in the high performance and scientific computing. It is quite suitable for data science research because its performance can be optimized for specific tasks and many scientific applications and libraries were built on this system.
+
+Vim:
+
+It is a text editor in Linux. It is quite useful when you want to edit files or write small programs because it has many shortcuts that can increase your efficiency in text editing. And it supports multiple programming languages.
+
+Git:
+
+Git is version control system allowing multiple contributors to cooperate on the same programming project. You can easily keep track of all the previous versions and other branches of a certain project by this tool.
+
+Shell:
+
+It is a script programming language that allows you to write codes for the terminal. If you want to run some commands millions of times with different parameters each time, you can write a script using Shell to automate this process.
