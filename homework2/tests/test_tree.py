@@ -29,7 +29,7 @@ class TestPrintTree(unittest.TestCase):
     def test4(self):
         # irregular tree
         case4 = Node(1, Node(2, Node(3, None, None), None),
-                   Node(None, Node(None, None, None), Node(None, None, None)))
+                     Node(None, Node(None, None, None), Node(None, None, None)))
         self.input = Tree.PrintTree(case4)
         self.answer = "|||1|||\n|2|||||\n3||||||\n"
         assert self.input == self.answer
