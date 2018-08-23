@@ -2,7 +2,6 @@ import unittest
 from tree.print_tree import Node,Tree
 
 
-
 class TestPrintTree(unittest.TestCase):
     def test1(self):
         # single node as tree
@@ -14,8 +13,6 @@ class TestPrintTree(unittest.TestCase):
     def test2(self):
         # full balanced tree
         case2=Node(1, Node(2,Node(4,None,None),Node(5,None,None)), Node(3,Node(6,None,None),Node(7,None,None)))
-
-
         self.input = Tree.PrintTree(case2)
         self.answer ="|||1|||\n|2|||3|\n4|5|6|7\n"
         assert self.input == self.answer
