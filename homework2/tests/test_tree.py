@@ -1,8 +1,9 @@
 import unittest
-from tree.print_tree import Node, Tree
+from tree.tree import Node, Tree
 
 
-class TestPrintTree(unittest.TestCase):
+class TestTree(unittest.TestCase):
+
     def test1(self):
         # single node as tree
         case1 = Node(1, None, None)
