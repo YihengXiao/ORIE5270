@@ -12,7 +12,7 @@ class Node(object):
         self.right = right
 
 
-class Tree(Node):
+class Tree(object, Node):
     def __init__(self, root):
         self.root = root
 
