@@ -47,9 +47,9 @@ class Tree(Node):
 
         n = len(res)
         out = ""
-        for i in range(1,len(res)+1):
+        for i in range(1, len(res)+1):
             side = "|"*(2**(n-i)-1)
-            if 2**(i-1)-1>0:
+            if 2**(i-1)-1 > 0:
                 sep = int(((2**n-1)-(2**(n-i)-1)*2-2**(i-1))/(2**(i-1)-1))
             else:
                 sep = 0
