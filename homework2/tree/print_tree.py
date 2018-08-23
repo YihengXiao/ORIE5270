@@ -15,6 +15,7 @@ class Node(object):
 class Tree(Node):
     def __init__(self, root):
         self.root = root
+
     @classmethod
     def PrintTree(cls, root):
         if not root:
@@ -33,7 +34,7 @@ class Tree(Node):
                 else:
                     x.append(Node('*', None, None))
             q = x
-            if len(q)>0 and len(list(filter(lambda x: x.value != '*', q))) > 0:
+            if len(q) > 0 and len(list(filter(lambda y: y.value != '*', q))) > 0:
                 res.append(q)
             else:
                 break
