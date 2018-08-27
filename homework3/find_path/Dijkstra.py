@@ -7,7 +7,7 @@ def load_graph(name_txt_file):
         pt = []
         graph = {}
         for line in lines:
-            line = line.rstrip('\n')
+            line = line.rstrip('\n\r')
             if line != '' and line[0] != '(':  # start point of a path
                 pt = line
             elif line == '':  # empty line, i.e no path start from pt
@@ -26,6 +26,7 @@ def load_graph(name_txt_file):
 
 def find_shortest_path(name_txt_file, source, destination):
     graph = load_graph(name_txt_file)
+    print(graph)
     d = {source: 0.0}
     F = []
     hq.heappush(F, (0.0, source))

@@ -40,7 +40,7 @@ def load_graph(name_txt_file):
         pt = []
         graph = {}
         for line in lines:
-            line = line.rstrip('\n')
+            line = line.rstrip('\n\r')
             if line != '' and line[0] != '(':  # start point of a path
                 pt = line
             elif line == '':  # empty line, i.e no path start from pt
