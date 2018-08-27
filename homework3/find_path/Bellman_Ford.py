@@ -6,7 +6,7 @@ def recover_path(graph, first, source, destination, Negative_cycle=False):
     cost = 0
     path = []
     pt0 = source
-    if Negative_cycle == False:
+    if Negative_cycle is False:
         pt1 = first[pt0]
         while pt1 != destination:
             pt1 = first[pt0]
@@ -69,8 +69,6 @@ def find_negative_cicles(name_txt_file):
     for node in graph.keys():
         Augmented_graph[node]['sink'] = 1.0
     Augmented_graph['sink'] = {}
-
-
     M0 = {node: np.inf for node in Augmented_graph.keys()}
     M0['sink'] = 0.0
     first = {}
@@ -88,7 +86,8 @@ def find_negative_cicles(name_txt_file):
         if i == len(Augmented_graph.keys()):
             for item in M1.items():
                 if item[1] < M0[item[0]]:
-                    (path, length) = recover_path(graph, first, item[0], M0[item[0]], Negative_cycle=True)
+                    (path, length) = recover_path(graph, first,
+                                                  item[0], M0[item[0]], Negative_cycle=True)
                     return (length, path)
             return (None, [])
         M0 = M1
@@ -117,7 +116,8 @@ def find_shortest_path_Bellman(name_txt_file, source, destination):
             else:
                 M1[v] = M0[v]
         if i == len(graph.keys()):
-            if M0[source] < M1[source] or source not in first.keys() or destination not in first.values():
+            if (M0[source] < M1[source] or
+                        source not in first.keys() or destination not in first.values()):
                 return (None, [])
 
             (path, cost) = recover_path(graph, first, source, destination, Negative_cycle=False)

@@ -1,6 +1,6 @@
 import unittest
-from find_path.Dijkstra import load_graph, find_shortest_path
-from find_path.Bellman_Ford import recover_path, find_negative_cicles, find_shortest_path_Bellman
+from find_path.Dijkstra import find_shortest_path
+from find_path.Bellman_Ford import find_negative_cicles, find_shortest_path_Bellman
 
 
 class TestTree(unittest.TestCase):
@@ -21,14 +21,13 @@ class TestTree(unittest.TestCase):
         (self.input1, self.input2) = find_shortest_path(case1_2, source='6', destination='1')
         assert (self.input1, self.input2) == self.answer
 
-
-
     def test2_1(self):
         # Bellman-Ford Algo: search for shortest path
         # test case2_1: return shortest path
         case2_1 = "./case1.txt"
         self.answer = (11, ['1', '2', '4', '7'])
-        (self.input1, self.input2) = find_shortest_path_Bellman(case2_1, source='1', destination='7')
+        (self.input1, self.input2) = \
+            find_shortest_path_Bellman(case2_1, source='1', destination='7')
         assert (self.input1, self.input2) == self.answer
 
     def test2_2(self):
@@ -36,9 +35,9 @@ class TestTree(unittest.TestCase):
         # test case2_2: no feasible path
         case2_2 = "./case1.txt"
         self.answer = (None, [])
-        (self.input1, self.input2) = find_shortest_path_Bellman(case2_2, source='6', destination='1')
+        (self.input1, self.input2) = \
+            find_shortest_path_Bellman(case2_2, source='6', destination='1')
         assert (self.input1, self.input2) == self.answer
-
 
     def test3(self):
         # Bellman-Ford Algo: detect negative cycle

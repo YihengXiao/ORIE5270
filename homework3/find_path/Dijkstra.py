@@ -42,8 +42,6 @@ def find_shortest_path(name_txt_file, source, destination):
             elif d[f[1]] + graph[f[1]][w] < d[w]:
                 d[w] = d[f[1]] + graph[f[1]][w]
                 bk[w] = f[1]
-
-
     if destination not in bk.keys():
         return (None, [])
     else:
@@ -58,5 +56,3 @@ def find_shortest_path(name_txt_file, source, destination):
             pt1 = pt0
         path = path[::-1]
         return (cost, path)
-
-
