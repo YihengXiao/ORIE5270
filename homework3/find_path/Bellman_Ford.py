@@ -116,10 +116,10 @@ def find_shortest_path_Bellman(name_txt_file, source, destination):
             else:
                 M1[v] = M0[v]
         if i == len(graph.keys()):
-            if (M0[source] < M1[source] or
-                        source not in first.keys() or destination not in first.values()):
+            if M0[source] < M1[source]:
                 return (None, [])
-
+            if source not in first.keys() or destination not in first.values():
+                return (None, [])
             (path, cost) = recover_path(graph, first, source, destination, Negative_cycle=False)
             return (cost, path)
         M0 = M1
