@@ -37,15 +37,15 @@ def find_shortest_path(name_txt_file, source, destination):
     """
     graph = load_graph(name_txt_file)
     d = {source: 0.0}
-    F = []
-    hq.heappush(F, (0.0, source))
+    F = []  # frontier set
+    hq.heappush(F, (0.0, source))  # use a heap to facilitate getting the minimum point
     S = set()
     bk = {}
     while F:
         f = hq.heappop(F)
         S.add(f[1])
         for w in graph[f[1]].keys():
-            if w not in S and w not in [item[1] for item in F]:
+            if w not in S and w not in [item[1] for item in F]:  # update d and bk
                 d[w] = d[f[1]] + graph[f[1]][w]
                 hq.heappush(F, (d[w], w))
                 bk[w] = f[1]
