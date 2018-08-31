@@ -1,13 +1,13 @@
-import os
-import sys
-spark_home = os.environ.get('SPARK_HOME', None)
-sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
-sys.path.insert(0, os.path.join(spark_home, 'python'))
-exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
-import pandas as pd
-import numpy as np
-import pyspark as ps
-import time
+# import os
+# import sys
+# spark_home = os.environ.get('SPARK_HOME', None)
+# sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
+# sys.path.insert(0, os.path.join(spark_home, 'python'))
+# exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
+# import pandas as pd
+# import numpy as np
+# import pyspark as ps
+# import time
 
 
 def multiply(A, v):
