@@ -1,10 +1,10 @@
-import os
+# import os
 import sys
 
-spark_home = os.environ.get('SPARK_HOME', None)
-sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
-sys.path.insert(0, os.path.join(spark_home, 'python'))
-exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
+# spark_home = os.environ.get('SPARK_HOME', None)
+# sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
+# sys.path.insert(0, os.path.join(spark_home, 'python'))
+# exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
 
 import numpy as np
 import pyspark as ps
@@ -55,7 +55,7 @@ def k_means(data_file, centroids_file, MAX_ITER = 100, tol = 0.001):
 
 if __name__ == '__main__':
 
-
+    sc = pyspark.SparkContext(appName="py_kmeans")
     data_file = 'data.txt'
     centroids_file = 'c1.txt'
     k_means(data_file, centroids_file, MAX_ITER= 100,tol=0.001)
