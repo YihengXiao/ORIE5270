@@ -2,6 +2,10 @@ import heapq as hq
 
 
 def load_graph(name_txt_file):
+    """
+    Input: name_txt_file, route of the graph
+    return: graph, a dictionary stores the graph.    
+    """
     with open(name_txt_file) as f:
         lines = f.readlines()
         pt = []
@@ -25,6 +29,12 @@ def load_graph(name_txt_file):
 
 
 def find_shortest_path(name_txt_file, source, destination):
+    """
+    Input: name_txt_file, name of text file containing the graph
+    Input: source, the source point 
+    Input: destination, the end point
+    Return: (cost, path), cost, the length of the shortest path; path, each node of the shortest path
+    """
     graph = load_graph(name_txt_file)
     d = {source: 0.0}
     F = []
