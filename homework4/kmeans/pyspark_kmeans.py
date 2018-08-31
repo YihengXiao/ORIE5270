@@ -55,7 +55,7 @@ def k_means(data_file, centroids_file, MAX_ITER = 100, tol = 0.001):
 
 if __name__ == '__main__':
 
-    sc = pyspark.SparkContext(appName="py_kmeans")
+    sc = ps.SparkContext(appName="py_kmeans")
     data_file = 'data.txt'
     centroids_file = 'c1.txt'
     k_means(data_file, centroids_file, MAX_ITER= 100,tol=0.001)
