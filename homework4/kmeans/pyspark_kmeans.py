@@ -15,6 +15,10 @@ import time
 
 
 def save_results(centroids):
+    """
+    param: centriods, a list containing final centroids
+    return: a textfile 
+    """
     file = open("final_centroids.txt", "w")
     for i in centroids:
         pt = ""
@@ -36,15 +40,22 @@ def k_means(data_file, centroids_file, MAX_ITER = 100, tol = 0.001):
 
     # Load the data
     data = sc.textFile(data_file).map(lambda line: np.array([float(x) for x in line.split(' ')])).cache()
-    ## load intial centriods and save it as a list
+    # load intial centriods and save it as a list
     centroids_0 = sc.textFile(centroids_file).map(lambda line: np.array([float(x) for x in line.split(' ')])).collect()
 
     for i in range(MAX_ITER):
+        
+        # cluster each point
         pt_in_group = data.map(lambda m: (np.argmin([np.linalg.norm(m - n) for n in centroids_0]), (m, 1)))
+        # compute new centroids
         centroids_1 = pt_in_group.reduceByKey(lambda x, y: (x[0]+y[0], x[1]+y[1])).sortByKey()
         centroids_1 = centroids_1.map(lambda x: x[1][0]/x[1][1]).collect()
+        
+        # err, compute the difference between consecutive steps (measured by l_2 norm).
         err = np.linalg.norm(np.array(centroids_1) - np.array(centroids_0))
         print(str(i)+","+str(err))
+        
+        # if err < tol, converge
         if err <= tol:
             print(str(i+1)+" iterations.\n"+"Error: "+str(err)+"Centroids:\n")
             save_results(centroids_1)
