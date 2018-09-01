@@ -43,12 +43,12 @@ def multiply(A, v):
 
 if __name__ == '__main__':
 
-    n1=10
-    n2=10
-    a = pd.DataFrame(data = np.array(range(n1*n2)).reshape((n1,n2)),index=range(n1))
-    b = pd.DataFrame(data = np.array(range(1,n1+1)).reshape((1,n1)))
-    a.to_csv("matrix.txt",sep=',',header=False)
-    b.to_csv("vector.txt",index=None,sep=',',header=False)
+#     n1=10
+#     n2=10
+#     a = pd.DataFrame(data = np.array(range(n1*n2)).reshape((n1,n2)),index=range(n1))
+#     b = pd.DataFrame(data = np.array(range(1,n1+1)).reshape((1,n1)))
+#     a.to_csv("matrix.txt",sep=',',header=False)
+#     b.to_csv("vector.txt",index=None,sep=',',header=False)
 
     sc = ps.SparkContext.getOrCreate()
 
