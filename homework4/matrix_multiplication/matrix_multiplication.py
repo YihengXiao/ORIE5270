@@ -1,12 +1,13 @@
-import os
-import sys
+# import os
+# import sys
 # spark_home = os.environ.get('SPARK_HOME', None)
 # sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
 # sys.path.insert(0, os.path.join(spark_home, 'python'))
 # exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
+
+import pyspark as ps
 import pandas as pd
 import numpy as np
-import pyspark as ps
 import time
 
 
@@ -16,13 +17,13 @@ def multiply(A, v):
     param: v, path of textfile of vector v
     return: res, a vector = Av
     """
-    
+
     matrices = sc.textFile(A)
     vectors = sc.textFile(v)
     """
     input 1: matrix.txt
     row idx, entry 0, entry 1, ..., entry n
-    0, a00, a01, ..., a0n
+    0, a00, a00, ..., a0n
     ...
     input 2:vector.txt
     entry 0
@@ -33,7 +34,7 @@ def multiply(A, v):
     vector = vectors.map(lambda l: [float(x) for x in l.split(",")]).cache()   # read vector v, split each entry by ','
 
     matrix = matrix.map(lambda l: (l[0], [(l[i], i-1) for i in range(1, len(l))]))  # add index to each entry of A
-    matrix = matrix.flatMap(lambda l: ((l[1][i][1], (l[0], l[1][i][0])) for i in range(len(l[1])))) 
+    matrix = matrix.flatMap(lambda l: ((l[1][i][1], (l[0], l[1][i][0])) for i in range(len(l[1]))))
     vector = vector.flatMap(lambda l: [(i, l[i]) for i in range(len(l))])
 
     res = matrix.join(vector).map(lambda l: (l[1][0][0], l[1][0][1]*l[1][1]))  # multiply entry from matrix and vector
@@ -42,25 +43,31 @@ def multiply(A, v):
     return res
 
 if __name__ == '__main__':
-
-#     n1=10
-#     n2=10
-#     a = pd.DataFrame(data = np.array(range(n1*n2)).reshape((n1,n2)),index=range(n1))
-#     b = pd.DataFrame(data = np.array(range(1,n1+1)).reshape((1,n1)))
-#     a.to_csv("matrix.txt",sep=',',header=False)
-#     b.to_csv("vector.txt",index=None,sep=',',header=False)
-
     sc = ps.SparkContext.getOrCreate()
-
     start = time.clock()
-    A = "matrix.txt"
-    v = "vector.txt"
+    A = "matrix.txt"  # file path of matrix
+    v = "vector.txt"  # file path of vector
+    print("A*v = ")
     print(multiply(A,v))
     elapsed = (time.clock() - start)
-    print(elapsed)
+    print("elapsed time; "+str(elapsed))
     sc.stop()
-    ## Compare with np.dot()
+
+    # Compare with np.dot()
+    # read text file
     start = time.clock()
-    print(np.dot(np.array(range(n1*n2)).reshape((n1,n2)),np.array(range(1,n1+1)).reshape((n1,1))))
+    matrix = []
+    vector = []
+    with open(A) as f:
+        for line in f.readlines():
+            matrix.append(np.array([float(x) for x in line.rstrip('\n').split(',')[1:]]))
+    f.close()
+    with open(v) as f:
+        line = np.array([float(x) for x in f.readline().rstrip('\n').split(',')])
+        vector = line.reshape(-1,1)
+    f.close()
+    print("A*v = ")
+    print(np.dot(matrix,vector).reshape(1,-1))
     elapsed = (time.clock() - start)
-    print(elapsed)
+    print("elapsed time; "+str(elapsed))
+
