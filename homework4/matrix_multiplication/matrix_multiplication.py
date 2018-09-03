@@ -38,7 +38,7 @@ def multiply(A, v):
     vector = vector.flatMap(lambda l: [(i, l[i]) for i in range(len(l))])
 
     res = matrix.join(vector).map(lambda l: (l[1][0][0], l[1][0][1]*l[1][1]))  # multiply entry from matrix and vector
-    res = res.reduceByKey(lambda x,y: x+y).sortBy(lambda x: x[0]).map(lambda x: x[1]).collect()  # compute Av
+    res = res.reduceByKey(lambda x,y: x+y).sortBy(lambda x: x[0]).map(lambda x: x[1])  # compute Av, a RDD
 
     return res
 
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     A = "matrix.txt"  # file path of matrix
     v = "vector.txt"  # file path of vector
     print("A*v = ")
-    print(multiply(A,v))
+    print(multiply(A,v).collect())
     elapsed = (time.clock() - start)
     print("elapsed time; "+str(elapsed))
     sc.stop()
