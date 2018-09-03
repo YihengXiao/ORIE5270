@@ -22,7 +22,7 @@ def multiply(A, v):
     """
     input 1: matrix.txt
     row idx, entry 0, entry 1, ..., entry n
-    0, a00, a00, ..., a0n
+    0, a00, a01, ..., a0n
     ...
     input 2:vector.txt
     entry 0
@@ -53,8 +53,8 @@ if __name__ == '__main__':
     sc = ps.SparkContext.getOrCreate()
 
     start = time.clock()
-    A = "./matrix.txt"
-    v = "./vector.txt"
+    A = "matrix.txt"
+    v = "vector.txt"
     print(multiply(A,v))
     elapsed = (time.clock() - start)
     print(elapsed)
