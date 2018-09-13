@@ -1,14 +1,14 @@
-# import os
+import os
 import sys
 
-# spark_home = os.environ.get('SPARK_HOME', None)
-# sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
-# sys.path.insert(0, os.path.join(spark_home, 'python'))
-# exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
+spark_home = os.environ.get('SPARK_HOME', None)
+sys.path.insert(0, os.path.join(spark_home, 'python/lib/py4j-0.10.7-src.zip'))
+sys.path.insert(0, os.path.join(spark_home, 'python'))
+exec(open(os.path.join(spark_home, 'python/pyspark/shell.py')).read())
 
 import numpy as np
 import pyspark as ps
-import math
+# import math
 import glob
 import re
 import time
@@ -61,13 +61,15 @@ def k_means(data_file, centroids_file, MAX_ITER = 100, tol = 0.001):
             save_results(centroids_1)
             break
         centroids_0 = centroids_1[:]
-        save_results(centroids_1)
+        if i == MAX_ITER - 1:
+            save_results(centroids_1)
     return 1
 
 if __name__ == '__main__':
 
-    sc = ps.SparkContext(appName="py_kmeans")
-    data_file = 'data.txt'
-    centroids_file = 'c1.txt'
-    k_means(data_file, centroids_file, MAX_ITER= 100,tol=0.001)
+    # sc = ps.SparkContext(appName="py_kmeans")
+    sc = ps.SparkContext.getOrCreate()
+    data_file = './data.txt'
+    centroids_file = './c1.txt'
+    k_means(data_file, centroids_file, MAX_ITER=100, tol=0)
     sc.stop()
